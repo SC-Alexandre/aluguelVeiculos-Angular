@@ -1,0 +1,52 @@
+<p-menubar [model]="items" />
+
+<h2>Cadastro de Cliente</h2>
+
+<p-floatlabel>
+  <input id="nome" pInputText [(ngModel)]="nome" />
+  <label for="nome">Nome do Cliente</label>
+</p-floatlabel>
+<br>
+
+<p-floatlabel>
+  <input id="cpf" pInputText [(ngModel)]="cpf" />
+  <label for="cpf">Cpf do Cliente</label>
+</p-floatlabel>
+<br>
+
+<p-button label="salvar"(click)="salvarCliente()" />
+<br><br>
+
+<p-table [value]="listaClientes" [tableStyle]="{ 'min-width': '50rem' }">
+  <ng-template #header>
+    <tr>
+      <th>Id</th>
+      <th>Nome</th>
+      <th>CPF</th>
+      <th></th>
+    </tr>
+  </ng-template>
+  <ng-template #body let-cliente>
+    <tr>
+      <td>{{ cliente.id }}</td>
+      <td>{{ cliente.nome }}</td>
+      <td>{{ cliente.cpf }}</td>
+      <td>
+        <button pButton
+                type="button"
+                icon="pi pi-pencil"
+                class="p-button-rounded p-button-success"
+                (click)="editarCliente(cliente)">
+        </button>
+        <button pButton
+                type="button"
+                icon="pi pi-trash"
+                class="p-button-rounded p-button-danger"
+                style="margin-left: 0.5em"
+                (click)="deletarCliente(cliente.id)">
+        </button>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>
+
