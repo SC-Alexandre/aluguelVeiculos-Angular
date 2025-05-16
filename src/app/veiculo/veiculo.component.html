@@ -12,8 +12,8 @@
   [options]="tipos"
   [(ngModel)]="tipo"
   optionLabel="label"
-  placeholder="Selecione o tipo"
-  class="w-full md:w-56">
+  optionValue="value"
+  placeholder="Selecione o tipo">
 </p-dropdown>
 <br><br>
 
@@ -36,13 +36,13 @@
       <td>{{ veiculo.modelo }}</td>
       <td>{{ veiculo.tipo }}</td>
       <td>{{ veiculo.disponivel ? 'Disponível' : 'Indisponível' }}</td>
-      <td><!--
+      <td>
         <button pButton
                 type="button"
                 icon="pi pi-pencil"
                 class="p-button-rounded p-button-success"
                 (click)="editarVeiculo(veiculo)">
-        </button> -->
+        </button>
         <button pButton
                 type="button"
                 icon="pi pi-trash"

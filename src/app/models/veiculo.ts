@@ -1,6 +1,6 @@
 export interface Veiculo {
   id?: number;
   modelo: string;
-  tipo: 'CARRO' | 'MOTO';
+  tipo: 'Carro' | 'Moto';
   disponivel: boolean;
 }

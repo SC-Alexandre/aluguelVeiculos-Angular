@@ -18,7 +18,7 @@ import {VeiculoService} from '../service/veiculo.service';
 })
 export class VeiculoComponent {
   modelo: string = '';
-  tipo: 'CARRO' | 'MOTO' | undefined;
+  tipo: 'Carro' | 'Moto' | undefined;
   disponivel: boolean = true;
   listaVeiculos: Veiculo[] = [];
 
@@ -27,8 +27,8 @@ export class VeiculoComponent {
   }
 
   tipos = [
-    { label: 'Carro', value: 'CARRO' },
-    { label: 'Moto', value: 'MOTO' }
+    { label: 'Carro', value: 'Carro' },
+    { label: 'Moto', value: 'Moto' }
   ];
 
   items: MenuItem[] = [
@@ -66,9 +66,9 @@ export class VeiculoComponent {
       });
   }
 
-  /*
+
   editarVeiculo(veiculo: any) {
-  }*/
+  }
 
   deletarVeiculo(id: number) {
     this.service.remove(id).subscribe(res => {
