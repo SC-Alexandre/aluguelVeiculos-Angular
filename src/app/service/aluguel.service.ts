@@ -13,4 +13,10 @@ export class AluguelService {
   registrarAluguel(aluguel: Aluguel): Observable<Aluguel> {
     return this.http.post<Aluguel>(this.url + '/Aluguel', aluguel);
   }
+
+  getAlugueisAtivos(): Observable<Aluguel[]> {
+    return this.http.get<Aluguel[]>(this.url + '/Aluguel/ativos');
+  }
+
+
 }

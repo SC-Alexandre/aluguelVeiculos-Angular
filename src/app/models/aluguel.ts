@@ -1,6 +1,7 @@
 export interface Aluguel {
-  cliente: { id: number };
-  veiculo: { id: number };
+  id?: number;
+  cliente: { id: number; nome?: string };
+  veiculo: { id: number; modelo?: string };
   dataInicio: string;
   dataFim: string;
 }

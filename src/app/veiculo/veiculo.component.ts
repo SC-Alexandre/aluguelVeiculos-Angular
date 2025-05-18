@@ -37,12 +37,16 @@ export class VeiculoComponent {
       routerLink: '/clientes'
     },
     {
-      label: 'Novo Veiculo',
+      label: 'Novo Veículo',
       routerLink: '/veiculos'
     },
     {
       label: 'Aluguel',
       routerLink: '/alugueis'
+    },
+    {
+      label: 'Relatorio',
+      routerLink: '/relatorio'
     }
   ];
 

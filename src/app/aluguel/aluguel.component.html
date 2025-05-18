@@ -1,0 +1,48 @@
+<p-menubar [model]="items" />
+
+<h2>Aluguel de Veículos</h2>
+
+<p-dropdown
+  [options]="clientes"
+  [(ngModel)]="aluguel.cliente"
+  optionLabel="nome"
+  placeholder="Selecione um Cliente">
+</p-dropdown>
+<br><br>
+
+<p-dropdown
+  [options]="veiculos"
+  [(ngModel)]="aluguel.veiculo"
+  optionLabel="modelo"
+  placeholder="Selecione um Veiculo">
+</p-dropdown>
+<br><br>
+
+<p-datepicker [(ngModel)]="dataInicio" placeholder="Data Início" showIcon iconDisplay="input" />
+<p-datepicker [(ngModel)]="dataFim" placeholder="Data Fim" showIcon iconDisplay="input" />
+
+<p-button label="Alugar" (click)="registrarAluguel()" />
+<br><br>
+
+<p-table [value]="alugueisAtivos" [tableStyle]="{ 'min-width': '50rem' }">
+  <ng-template #header>
+    <tr>
+      <th>ID</th>
+      <th>Cliente</th>
+      <th>Veiculo</th>
+      <th>Data Início</th>
+      <th>Data Fim</th>
+      <th></th>
+    </tr>
+  </ng-template>
+  <ng-template #body let-aluguel>
+    <tr>
+      <td>{{ aluguel.id }}</td>
+      <td>{{ aluguel.cliente?.nome }}</td>
+      <td>{{ aluguel.veiculo?.modelo }}</td>
+      <td>{{ aluguel.dataInicio }}</td>
+      <td>{{ aluguel.dataFim }}</td>
+      <p-button label="Devolver" (click)="registrarAluguel()" />
+    </tr>
+  </ng-template>
+</p-table>
