@@ -18,5 +18,8 @@ export class AluguelService {
     return this.http.get<Aluguel[]>(this.url + '/Aluguel/ativos');
   }
 
+  devolverVeiculo(id: number): Observable<Aluguel> {
+    return this.http.put<Aluguel>(this.url + '/Aluguel/' + id, {});
+  }
 
 }

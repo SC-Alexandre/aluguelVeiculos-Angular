@@ -86,6 +86,13 @@ export class AluguelComponent {
   }
 
   devolverVeiculo(id: number) {
+    this.aluguelService.devolverVeiculo(id).subscribe(() => {
+      this.aluguelService.getAlugueisAtivos().subscribe(alugueis => {
+        this.alugueisAtivos = alugueis;
+      });
+    }, error => {
+      console.error('Erro ao devolver veículo:', error);
+    });
   }
 
   editarAluguel(aluguel: any) {
