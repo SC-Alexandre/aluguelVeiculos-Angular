@@ -9,10 +9,13 @@ import {Veiculo} from '../models/veiculo';
 import { DropdownModule } from 'primeng/dropdown';
 import {Router} from '@angular/router';
 import {VeiculoService} from '../service/veiculo.service';
+import { DialogModule } from 'primeng/dialog';
+import { InputTextModule } from 'primeng/inputtext';
+import {Cliente} from '../models/cliente';
 
 @Component({
   selector: 'app-veiculo',
-  imports: [FormsModule, Menubar, FloatLabelModule, ButtonModule, TableModule, DropdownModule],
+  imports: [FormsModule, Menubar, FloatLabelModule, ButtonModule, TableModule, DropdownModule, DialogModule, InputTextModule],
   templateUrl: './veiculo.component.html',
   styleUrl: './veiculo.component.css'
 })

@@ -24,7 +24,7 @@
 <p-button label="Alugar" (click)="registrarAluguel()" />
 <br><br>
 
-<p-table [value]="alugueisAtivos" [tableStyle]="{ 'min-width': '50rem' }">
+<p-table [value]="alugueisAtivos" [paginator]="true" [rows]="5" [tableStyle]="{ 'min-width': '50rem' }" [rowsPerPageOptions]="[5, 10, 20]">
   <ng-template #header>
     <tr>
       <th>ID</th>
@@ -38,11 +38,25 @@
   <ng-template #body let-aluguel>
     <tr>
       <td>{{ aluguel.id }}</td>
-      <td>{{ aluguel.cliente?.nome }}</td>
-      <td>{{ aluguel.veiculo?.modelo }}</td>
+      <td>{{ aluguel.cliente.nome }}</td>
+      <td>{{ aluguel.veiculo.modelo }}</td>
       <td>{{ aluguel.dataInicio }}</td>
       <td>{{ aluguel.dataFim }}</td>
-      <p-button label="Devolver" (click)="registrarAluguel()" />
+      <td>
+        <button pButton
+                type="button"
+                icon="pi pi-pencil"
+                class="p-button-rounded p-button-success"
+                (click)="editarAluguel(aluguel)">
+        </button>
+        <button pButton
+                type="button"
+                icon="pi pi-undo"
+                class="p-button-rounded"
+                style="margin-left: 0.5em; background-color: orange; border: none; color: white"
+                (click)="devolverVeiculo(aluguel.id)">
+        </button>
+      </td>
     </tr>
   </ng-template>
 </p-table>

@@ -4,15 +4,15 @@ import { DropdownModule } from 'primeng/dropdown';
 import { DatePickerModule } from 'primeng/datepicker';
 import { ButtonModule } from 'primeng/button'
 import { TableModule } from 'primeng/table';
-import { AluguelService } from '../services/aluguel.service';
-import { ClienteService } from '../services/cliente.service';
-import { VeiculoService } from '../services/veiculo.service';
 import { Cliente } from '../models/cliente';
 import { Veiculo } from '../models/veiculo';
 import { Aluguel } from '../models/aluguel';
 import { MenuItem } from 'primeng/api';
 import { DialogModule } from 'primeng/dialog';
 import { FormsModule } from '@angular/forms';
+import {AluguelService} from '../service/aluguel.service';
+import {ClienteService} from '../service/cliente.service';
+import {VeiculoService} from '../service/veiculo.service';
 
 @Component({
   selector: 'app-aluguel',
@@ -26,6 +26,8 @@ export class AluguelComponent {
   alugueisAtivos: Aluguel[] = [];
   dataInicio: Date = new Date();
   dataFim: Date = new Date();
+
+  ptBR: any;
 
   aluguel: Aluguel = {
     cliente: { id: 0 },
@@ -83,4 +85,10 @@ export class AluguelComponent {
     });
   }
 
+  devolverVeiculo(id: number) {
+  }
+
+  editarAluguel(aluguel: any) {
+
+  }
 }

@@ -31,14 +31,13 @@ export class ClienteService {
     return this.http.delete<void>(this.url + '/Cliente/' + id);
   }
 
-  update(cliente: Cliente): Observable<Cliente>{
-    return this.http.put<Cliente>(this.url + '/Cliente', cliente);
+  update(cliente: Cliente): Observable<Cliente> {
+    return this.http.put<Cliente>(`${this.url}/Cliente/${cliente.id}`, cliente);
   }
 
   findAll():Observable<Cliente[]>{
     return this.http.get<Cliente[]>(this.url + '/Cliente')
   }
-
 
   // Metodos de validacao:
   private validarCPF(cpf: string): boolean {

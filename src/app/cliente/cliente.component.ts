@@ -8,10 +8,12 @@ import {Cliente} from '../models/cliente';
 import {TableModule} from 'primeng/table';
 import {Router} from '@angular/router';
 import {ClienteService} from '../service/cliente.service';
+import { DialogModule } from 'primeng/dialog';
+import { InputTextModule } from 'primeng/inputtext';
 
 @Component({
   selector: 'app-cliente',
-  imports: [FormsModule, Menubar, FloatLabelModule, ButtonModule, TableModule],
+  imports: [FormsModule, Menubar, FloatLabelModule, ButtonModule, TableModule, DialogModule, InputTextModule],
   templateUrl: './cliente.component.html',
   styleUrl: './cliente.component.css'
 })
@@ -19,6 +21,9 @@ export class ClienteComponent {
   nome: string = '';
   cpf: string = '';
   listaClientes: Cliente[] = [];
+
+  clienteSelecionado: Cliente = { id: 0, nome: '', cpf: '' };
+  mostrarDialogEdicao: boolean = false;
 
   constructor(private service: ClienteService, private router: Router) {
     this.service.findAll().subscribe(clientes => this.listaClientes = clientes);
@@ -52,9 +57,21 @@ export class ClienteComponent {
       })
   }
 
-  editarCliente(cliente: any) {
-
+  editarCliente(cliente: Cliente) {
+    this.clienteSelecionado = { ...cliente }; // Cópia para edição
+    this.mostrarDialogEdicao = true;
   }
+
+  salvarEdicaoCliente() {
+    this.service.update(this.clienteSelecionado).subscribe(() => {
+      this.mostrarDialogEdicao = false; // Fecha o modal
+      this.service.findAll().subscribe(clientes => this.listaClientes = clientes); // Recarrega a lista
+    }, error => {
+      console.error('Erro ao atualizar cliente:', error);
+    });
+  }
+
+
 
   deletarCliente(id: number) {
     this.service.remove(id).subscribe(res => {

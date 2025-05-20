@@ -20,7 +20,7 @@
 <p-button label="Salvar" (click)="salvarVeiculo()" />
 <br><br>
 
-<p-table [value]="listaVeiculos" [tableStyle]="{ 'min-width': '50rem' }">
+<p-table [value]="listaVeiculos" [paginator]="true" [rows]="5" [tableStyle]="{ 'min-width': '50rem' }" [rowsPerPageOptions]="[5, 10, 20]">
   <ng-template #header>
     <tr>
       <th>Id</th>
@@ -54,4 +54,3 @@
     </tr>
   </ng-template>
 </p-table>
-

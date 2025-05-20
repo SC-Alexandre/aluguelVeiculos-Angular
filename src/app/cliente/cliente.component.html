@@ -17,7 +17,7 @@
 <p-button label="Salvar"(click)="salvarCliente()" />
 <br><br>
 
-<p-table [value]="listaClientes" [tableStyle]="{ 'min-width': '50rem' }">
+  <p-table [value]="listaClientes" [paginator]="true" [rows]="5" [tableStyle]="{ 'min-width': '50rem' }" [rowsPerPageOptions]="[5, 10, 20]">
   <ng-template #header>
     <tr>
       <th>Id</th>
@@ -50,3 +50,29 @@
   </ng-template>
 </p-table>
 
+
+
+<p-dialog
+  header="Editar Cliente"
+  [(visible)]="mostrarDialogEdicao"
+  [modal]="true"
+  [style]="{ width: '25rem' }"
+  [closable]="false"
+>
+  <div class="p-fluid">
+    <div class="field">
+      <label for="nome">Nome</label>
+      <input id="nome" type="text" pInputText [(ngModel)]="clienteSelecionado.nome" />
+    </div>
+
+    <div class="field">
+      <label for="cpf">CPF</label>
+      <input id="cpf" type="text" pInputText [(ngModel)]="clienteSelecionado.cpf" />
+    </div>
+
+    <div class="mt-3 flex justify-content-end gap-2">
+      <button pButton label="Salvar" icon="pi pi-check" (click)="salvarEdicaoCliente()"></button>
+      <button pButton label="Cancelar" icon="pi pi-times" severity="secondary" (click)="mostrarDialogEdicao = false"></button>
+    </div>
+  </div>
+</p-dialog>
